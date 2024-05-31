@@ -23,6 +23,9 @@ export default function NavBar() {
             <Link passHref href="/games">
               <Nav.Link>Home</Nav.Link>
             </Link>
+            <Link passHref href="/games/new">
+              <Nav.Link>Create Game</Nav.Link>
+            </Link>
             <Link passHref href="/events">
               <Nav.Link>Events</Nav.Link>
             </Link>
