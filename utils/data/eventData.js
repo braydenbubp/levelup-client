@@ -51,6 +51,17 @@ const updateEvent = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteEvent = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/events/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  createEvent, getEvents, updateEvent, getSingleEvent,
+  createEvent, getEvents, updateEvent, getSingleEvent, deleteEvent,
 };

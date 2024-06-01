@@ -27,7 +27,7 @@ const EventForm = ({ user, eventObj }) => {
   }, []);
 
   useEffect(() => {
-    if (eventObj.id) {
+    if (eventObj?.id) {
       setCurrentEvent({
         date: eventObj.date,
         time: eventObj.time,
@@ -56,7 +56,7 @@ const EventForm = ({ user, eventObj }) => {
       game: currentEvent.gameId,
       userId: user.uid,
     };
-    if (eventObj.id) {
+    if (eventObj?.id) {
       event.id = eventObj.id;
       updateEvent(event).then(() => router.push('/events'));
     } else {
