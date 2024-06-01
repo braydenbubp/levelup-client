@@ -33,7 +33,7 @@ const GameForm = ({ user, gameObj }) => {
   }, []);
 
   useEffect(() => {
-    if (gameObj.id) {
+    if (gameObj?.id) {
       setCurrentGame({
         skillLevel: gameObj.skill_level,
         numberOfPlayers: gameObj.number_of_players,
@@ -66,14 +66,13 @@ const GameForm = ({ user, gameObj }) => {
     };
 
     // send POST to api
-    if (gameObj.id) {
+    if (gameObj?.id) {
       game.id = gameObj.id;
       updateGame(game).then(() => router.push('/games'));
     } else {
       createGame(game).then(() => router.push('/games'));
     }
   };
-
   return (
     <>
       <Form onSubmit={handleSubmit}>

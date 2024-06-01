@@ -63,6 +63,17 @@ const updateGame = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteGame = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/games/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getGames, createGame, getGameTypes, getSingleGame, updateGame,
+  getGames, createGame, getGameTypes, getSingleGame, updateGame, deleteGame,
 };
