@@ -2,11 +2,11 @@
 
 const endpoint = 'http://localhost:8000';
 
-const getEvents = () => new Promise((resolve, reject) => {
+const getEvents = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/events`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
+      Authorization: uid,
     },
   })
     .then((response) => response.json())
@@ -62,6 +62,32 @@ const deleteEvent = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const joinEvent = (eventId, payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/events/${eventId}/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const leaveEvent = (eventId, payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/events/${eventId}/leave`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   createEvent, getEvents, updateEvent, getSingleEvent, deleteEvent,
+  joinEvent, leaveEvent,
 };
